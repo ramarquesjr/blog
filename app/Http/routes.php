@@ -16,3 +16,8 @@
 });*/
 
 Route::get('/','Posts@index');
+Route::get('posts/{id}','Posts@get');
+Route::get('tests',function(){
+	$rand = substr(uniqid('', true), -5);
+	echo $rand;
+});

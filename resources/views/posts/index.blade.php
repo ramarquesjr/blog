@@ -1,13 +1,13 @@
 @extends('template')
 
 @section('title')
-    Veja nossos últimos posts
+    Últimos posts divulgados
 @endsection
 
 @section('content')
     @foreach($dados as $dado)
-        <h3>{{$dado['titulo']}}</h3>
-        <p>{{$dado['descricao']}}</p>
+        <h4><a href="/public/posts/{{$dado->id}}">{{$dado->title}}</a></h4>
     @endforeach
+{{ $dados->links() }}
 
 @endsection
