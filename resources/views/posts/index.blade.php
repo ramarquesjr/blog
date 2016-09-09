@@ -6,7 +6,7 @@
 
 @section('content')
     @foreach($dados as $dado)
-        <h4><a href="/public/posts/{{$dado->id}}">{{$dado->title}}</a></h4>
+        <h4><a href="{{URL::to('posts',$dado->id)}}">{{$dado->title}}</a></h4>
     @endforeach
 {{ $dados->links() }}
 
