@@ -16,7 +16,7 @@ class CreateTagsPostsTable extends Migration
             $table->integer('posts_id');
             $table->foreign('posts_id')->references('id')->on('posts');
             $table->integer('tags_id');
-            $table->foreign('posts_id')->references('id')->on('tags');
+            $table->foreign('tags_id')->references('id')->on('tags');
         });
     }
 
