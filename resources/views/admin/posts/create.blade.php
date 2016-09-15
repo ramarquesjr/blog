@@ -13,19 +13,14 @@
 		</ul>
 	@endif
 	{!! Form::open(['method'=>'post','route'=>'admin.posts.store']) !!}
+	@include('admin.posts._form')
 	<div class="form-group">
-		{!! Form::label('title','Título:') !!}
-		{!! Form::text('title',null,['class'=>'form-control']) !!}
-	</div>
-
-
-	<div class="form-group">
-		{!! Form::label('content','Conteúdo:') !!}
-		{!! Form::textarea('content',null,['class'=>'form-control']) !!}
+		{!! Form::label('tags',"Tags:",['class'=>'control-label']) !!}
+		{!! Form::textarea("tags",null,['class'=>'form-control']) !!}
 	</div>
 
 	<div class="form-group">
-		{!! Form::submit('Criar post',['class'=>'btn btn-']) !!}
+		{!! Form::submit('Criar post',['class'=>'btn btn-primary']) !!}
 	</div>
 
 	{!! Form::close() !!}
