@@ -1,10 +1,7 @@
-@extends('template')
-
-@section('title')
-    Create new post
-@endsection
+@extends('layouts.app')
 
 @section('content')
+	<h1>Create new post</h1>
 	@if($errors->any())
 		<ul class="alert">
 			@foreach($errors->all() as $error)

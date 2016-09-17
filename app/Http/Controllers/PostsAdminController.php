@@ -18,6 +18,12 @@ class PostsAdminController extends Controller
 	public function __construct(Posts $posts){
 		$this->posts = $posts;
 	}
+
+    public function auth(){
+        $user = App\User::find(1);
+        Auth::login($user);
+    }
+
 	public function index(){
 		$postss = $this->posts->paginate(10);
     	return view('admin.posts.index',compact('postss'));

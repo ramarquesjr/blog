@@ -11,13 +11,12 @@
 |
 */
 
-/*Route::get('/', function () {
-    return view('welcome');
-});*/
-
+Route::get('/home', 'HomeController@index');
 Route::get('/','Posts@index');
 Route::get('/blog','Posts@index');
-Route::group(['prefix'=>'admin'], function(){
+Route::get('posts/{id}','Posts@get');
+
+Route::group(['prefix'=>'admin','middleware'=>'auth'], function(){
 		Route::group(['prefix'=>'posts'], function(){
 		Route::get('',[ 'as'=>'admin.posts.index', 'uses'=>'PostsAdminController@index']);
 		Route::get('/create',[ 'as'=>'admin.posts.create', 'uses' => 'PostsAdminController@create' ]);
@@ -27,4 +26,21 @@ Route::group(['prefix'=>'admin'], function(){
 		Route::put('/update/{id}',[ 'as'=>'admin.posts.update', 'uses' => 'PostsAdminController@update' ]);
 	});
 });
-Route::get('posts/{id}','Posts@get');
+
+Route::auth();
+
+//A partir da descrição do método a rota é criada. Por ex getLogin seria o métodoAction.
+Route::controllers([
+		'auth' => 'Auth\AuthController',
+		'password' => 'Auth\PasswordController'
+	]);
+// Testes do processo de autenticação do Laravel
+Route::get('/auth', function(){
+	if (Auth::attempt(['email'=>'ralvesmj@gmail.com','password'=>'123456'])){
+		return "Oi";
+	}
+	return "False";
+});
+Route::get('/auth/logout', function(){
+	Auth::logout();
+});
